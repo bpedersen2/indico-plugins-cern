@@ -10,6 +10,8 @@ from indico.util.string import natural_sort_key
 from indico.web.forms.base import IndicoForm
 from indico.web.forms.fields import EmailListField, MultipleItemsField
 
+from wtforms.fields.html5 import EmailField
+
 
 def _order_func(object_list):
     return sorted(object_list, key=lambda r: natural_sort_key(r[1].full_name))
@@ -17,8 +19,11 @@ def _order_func(object_list):
 
 class SettingsForm(IndicoForm):
     _fieldsets = [
+        ('Sender', ['sender_email',]),    
         ('Seminar emails', ['seminar_categories', 'seminar_recipients'])
     ]
+
+    sender_email = EmailField ( 'Sender')
 
     seminar_categories = MultipleItemsField('Seminar categories',
                                             fields=[{'id': 'id', 'caption': 'Category ID', 'required': True}])
@@ -33,6 +38,7 @@ class CERNCronjobsPlugin(IndicoPlugin):
     configurable = True
     settings_form = SettingsForm
     default_settings = {
+        'sender_email': '',
         'seminar_categories': set(),
         'seminar_recipients': set()
     }
