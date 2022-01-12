@@ -10,7 +10,7 @@ from indico.util.string import natural_sort_key
 from indico.web.forms.base import IndicoForm
 from indico.web.forms.fields import EmailListField, MultipleItemsField
 
-from wtforms.fields.html5 import EmailField
+from wtforms.fields import EmailField
 
 
 def _order_func(object_list):
