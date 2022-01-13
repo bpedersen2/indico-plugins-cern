@@ -19,11 +19,11 @@ def _order_func(object_list):
 
 class SettingsForm(IndicoForm):
     _fieldsets = [
-        ('Sender', ['sender_email',]),    
+        ('Sender', ['sender_email']),
         ('Seminar emails', ['seminar_categories', 'seminar_recipients'])
     ]
 
-    sender_email = EmailField ( 'Sender')
+    sender_email = EmailField ('Sender')
 
     seminar_categories = MultipleItemsField('Seminar categories',
                                             fields=[{'id': 'id', 'caption': 'Category ID', 'required': True}])
