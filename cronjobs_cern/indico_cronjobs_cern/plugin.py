@@ -38,7 +38,7 @@ class CERNCronjobsPlugin(IndicoPlugin):
     configurable = True
     settings_form = SettingsForm
     default_settings = {
-        'sender_email': '',
+        'sender_email': 'noreply-indico-team@cern.ch',
         'seminar_categories': set(),
         'seminar_recipients': set()
     }
