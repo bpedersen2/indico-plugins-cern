@@ -11,6 +11,7 @@ from indico.web.forms.base import IndicoForm
 from indico.web.forms.fields import EmailListField, MultipleItemsField
 
 from wtforms.fields import EmailField
+from wtforms.validators import DataRequired, Email
 
 
 def _order_func(object_list):
@@ -23,7 +24,7 @@ class SettingsForm(IndicoForm):
         ('Seminar emails', ['seminar_categories', 'seminar_recipients'])
     ]
 
-    sender_email = EmailField ('Sender')
+    sender_email = EmailField ('Sender', [DataRequired(), Email()])
 
     seminar_categories = MultipleItemsField('Seminar categories',
                                             fields=[{'id': 'id', 'caption': 'Category ID', 'required': True}])
