@@ -24,7 +24,7 @@ class SettingsForm(IndicoForm):
         ('Seminar emails', ['seminar_categories', 'seminar_recipients'])
     ]
 
-    sender_email = EmailField ('Sender', [DataRequired(), Email()])
+    sender_email = EmailField('Sender', [DataRequired(), Email()])
 
     seminar_categories = MultipleItemsField('Seminar categories',
                                             fields=[{'id': 'id', 'caption': 'Category ID', 'required': True}])
